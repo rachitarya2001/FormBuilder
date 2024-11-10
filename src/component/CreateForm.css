@@ -1,0 +1,76 @@
+.form-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.add-input-btn, .save-form-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-input-btn:hover, .save-form-btn:hover {
+  background-color: #218838;
+}
+
+.inputs-display {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.input-item {
+  width: 48%;
+  margin-right: 2%;
+  margin-bottom: 20px;
+}
+
+.input-item label {
+  font-weight: bold;
+}
+
+.input-item input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.input-type {
+  margin-bottom: 20px;
+}
+
+.input-title,
+.input-placeholder {
+  margin-bottom: 20px;
+}
+
+.input-type input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.save-form {
+  margin-top: 20px;
+}

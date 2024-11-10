@@ -1,131 +1,112 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import './FormView.css'; // Importing the CSS file
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import './FormView.css';
 
 const FormView = () => {
   const { id } = useParams(); // Extract form ID from the URL
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook for redirecting after form submission
   const [formData, setFormData] = useState(null);
-  const [isEditing, setIsEditing] = useState(false); // Track if in edit mode
-  const [updatedData, setUpdatedData] = useState({}); // Track edited form data
+  const [responses, setResponses] = useState({});
+  const [formTitle, setFormTitle] = useState(''); // State for form title
 
+  // Fetch form data and user's responses on load
   useEffect(() => {
-    if (id) {
-      fetch(`http://localhost:5000/form/${id}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.message === 'Form not found') {
-            setFormData(null); // Handle form not found case
-          } else {
-            setFormData(data);
-            setUpdatedData(data); // Initialize updatedData with fetched data
-          }
-        })
-        .catch(error => console.error('Error fetching form:', error));
-    }
+    // Fetch form data
+    fetch(`http://localhost:5000/form/${id}`)
+      .then(response => response.json())
+      .then(data => {
+        setFormData(data);
+        setFormTitle(data.title); // Set form title from response
+      })
+      .catch(error => console.error('Error fetching form:', error));
+
+    // Fetch user's responses (if they exist)
+    fetch(`http://localhost:5000/form/responses/${id}`)
+      .then(response => response.json())
+      .then(data => setResponses(data)) // Assuming responses are stored
+      .catch(error => console.error('Error fetching responses:', error));
   }, [id]);
 
-  // Handle input changes for form editing
+  // Handle form input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUpdatedData({
-      ...updatedData,
+    setResponses({
+      ...responses,
       [name]: value,
     });
   };
 
-  // Handle form submission (PUT request to update form data)
-  const handleFormSubmit = (e) => {
+  // Handle title change
+  const handleTitleChange = (e) => {
+    setFormTitle(e.target.value); // Update form title state
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Submitting updated form data:', updatedData);
-
+    // Send updated title and responses to your backend
     fetch(`http://localhost:5000/form/${id}`, {
-      method: 'PUT',
+      method: 'PUT', // Use PUT to update the form title
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updatedData),
+      body: JSON.stringify({
+        title: formTitle, // Include updated form title
+        inputs: formData.inputs, // Send form inputs as is (no change here)
+      }),
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Form updated:', data);
-        // If the response contains the updated form data, proceed
-        if (data._id) {
-          setFormData(data); // Update formData with the new data
-          setIsEditing(false); // Exit edit mode
-          alert('Updating form successfully');
-          navigate('/'); // Redirect to the form list page
-        } else {
-          alert('Error updating form');
-        }
+      .then(() => {
+        return fetch(`http://localhost:5000/form/responses/${id}`, {
+          method: 'POST', // Use POST to save the response data
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(responses),
+        });
       })
-      .catch(error => {
-        console.error('Error updating form:', error);
-        alert('Error updating form');
-      });
+      .then(() => {
+        alert('Form updated and submitted successfully!');
+        navigate('/'); // Redirect to form list or a different page
+      })
+      .catch((error) => console.error('Error submitting form:', error));
   };
 
-
   if (!formData) {
-    return <p className="error-message">Form not found</p>; // Display message if form is not found
+    return <p>Loading form...</p>;
   }
 
   return (
     <div className="form-container">
-      <h1 className="form-title">{formData.title}</h1>
-      {isEditing ? (
-        <form onSubmit={handleFormSubmit}>
-          <div className="form-details">
-            <label>
-              <strong>Title:</strong>
-              <input
-                type="text"
-                name="title"
-                value={updatedData.title}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              <strong>Email:</strong>
-              <input
-                type="email"
-                name="email"
-                value={updatedData.email}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              <strong>Password:</strong>
-              <input
-                type="password"
-                name="password"
-                value={updatedData.password}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              <strong>Date:</strong>
-              <input
-                type="date"
-                name="date"
-                value={updatedData.date}
-                onChange={handleInputChange}
-              />
-            </label>
+      <h1>Edit Form</h1>
+      {/* Editable form title */}
+      <div className="form-field">
+        <label>Form Title:</label>
+        <input
+          type="text"
+          value={formTitle}
+          onChange={handleTitleChange}
+          placeholder="Enter form title"
+          required
+        />
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        {formData.inputs.map((input, index) => (
+          <div key={index} className="form-field">
+            <label>{input.type}</label>
+            <input
+              type={input.type}
+              name={input.type} // Use type as the name for identifying inputs
+              value={responses[input.type] || input.value} // Populate with responses or default value
+              onChange={handleInputChange} // Handle input change
+              placeholder={input.value}
+              required
+            />
           </div>
-          <button type="submit" className="save-button">Save</button>
-          <button type="button" className="cancel-button" onClick={() => setIsEditing(false)}>Cancel</button>
-        </form>
-      ) : (
-        <div className="form-details">
-          <p><strong>Email:</strong> {formData.email}</p>
-          <p><strong>Password:</strong> {formData.password}</p>
-          <p><strong>Date:</strong> {formData.date}</p>
-          <button className="edit-button" onClick={() => setIsEditing(true)}>Edit</button>
-        </div>
-      )}
+        ))}
+        <button type="submit" className="submit-btn">Submit</button>
+      </form>
     </div>
   );
 };
