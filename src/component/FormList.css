@@ -1,0 +1,135 @@
+/* Container for the form list */
+.form-list-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-list-title {
+  font-size: 26px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Styling for create form button */
+.create-form-btn {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.create-btn {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.create-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Form list styling */
+.form-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.2s;
+  gap: 10px;
+}
+
+.form-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.form-info {
+  flex: 1;
+}
+
+.form-title {
+  font-size: 18px;
+  color: #333;
+  margin: 0 0 5px;
+}
+
+.form-date {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Action buttons */
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* View button styling */
+.view-btn, .del-btn {
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s;
+  cursor: pointer;
+}
+
+.view-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.view-btn:hover {
+  background-color: #218838;
+}
+
+/* Delete button styling */
+/* Delete button */
+.del-btn {
+  padding: 8px 16px;
+  background-color: #f62929;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.del-btn:hover {
+  background-color: #e60000;
+}
+
+/* Other styles remain unchanged */
+
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .form-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+}
