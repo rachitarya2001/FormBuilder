@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# FORM_SUBMISSION - Dynamic Form Builder Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a **Dynamic Form Builder Web Application** named **FORM_SUBMISSION**. It is built using **React** for the frontend (`form-builder`) and **Node.js with MongoDB** for the backend (`for-backend`). This application allows users to create, manage, and submit dynamic forms. It also allows admins to view and manage form responses seamlessly.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Create Dynamic Forms**: Users can create custom forms with different input fields (text, select, checkbox, etc.).
+- **Form Management**: Users can view, edit, and delete forms they have created.
+- **Submit Responses**: Users can submit responses to forms created by admins.
+- **View Responses**: Admins can view responses submitted by users for each form.
+- **User Authentication**: Users and admins can sign up, log in, and manage their accounts.
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Follow these steps to set up and run the project on your local machine:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Step 1: Clone the Repository
 
-### `npm test`
+Clone the repository to your local machine:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/rachitarya2001/FormBuilder.git
+cd FormBuilder
 
-### `npm run build`
+Step 2: Install Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Backend (for-backend)
+Navigate to the for-backend directory:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+Copy code
+cd for-backend
+Install the required dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
+Copy code
+npm install
+Set up your MongoDB database:
 
-### `npm run eject`
+You can either use a local MongoDB instance or use MongoDB Atlas for a cloud database.
+Update the MongoDB connection URL in the .env file inside the for-backend directory.
+Frontend (form-builder)
+Navigate to the form-builder directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bash
+Copy code
+cd ../form-builder
+Install the required dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+bash
+Copy code
+npm install
+Step 3: Running the Application
+Start the Backend Server
+Navigate to the for-backend directory (if you are not already there).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Start the backend server:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+bash
+Copy code
+npm start
+The backend will be running on http://localhost:3000 (or any port configured in the .env file).
 
-## Learn More
+Start the Frontend Server
+Navigate to the form-builder directory (if you are not already there).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Start the frontend server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+bash
+Copy code
+npm start
+The frontend will be running on http://localhost:3000.
 
-### Code Splitting
+Step 4: Access the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Open your browser and go to http://localhost:3000 to view the dynamic form builder and start using the application.
+Make sure the backend server is running in parallel so that it can handle API requests.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Conclusion
+This FORM_SUBMISSION project is designed to help users create, manage, and submit forms dynamically. It provides an intuitive interface for users and administrators to manage their forms and responses. It can be easily set up and run on your local machine by following the steps above.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

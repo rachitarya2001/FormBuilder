@@ -26,21 +26,27 @@ const FormList = () => {
 
   return (
     <div className="form-list-container">
-      <h2>All Forms</h2>
+      <h2>Available Forms</h2>
       <div className="create-form-btn">
         <Link to="/form/create" className="create-btn">
-          Create New Form
+        Design a New Form
         </Link>
       </div>
-      <div className="form-list">
-        {forms.map((form) => (
-          <div className="form-item" key={form._id}>
-            <h3>{form.title}</h3>
-            <Link to={`/form/${form._id}`} className="view-btn">Edit</Link>
-            <button onClick={() => handleDelete(form._id)} className="delete-btn">Delete</button>
-          </div>
-        ))}
-      </div>
+
+      {/* Check if forms array is empty */}
+      {forms.length === 0 ? (
+        <p>No forms are available or submitted yet.</p>
+      ) : (
+        <div className="form-list">
+          {forms.map((form) => (
+            <div className="form-item" key={form._id}>
+              <h3>{form.title}</h3>
+              <Link to={`/form/${form._id}`} className="view-btn">Edit</Link>
+              <button onClick={() => handleDelete(form._id)} className="delete-btn">Delete</button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -38,39 +38,44 @@ const CreateForm = () => {
 
   // Handle saving form values
   const handleSaveForm = (e) => {
-    if(!formTitle){
-      alert("please fill the details first.")
+    if (!formTitle) {
+      alert("Please fill the details first.");
       return;
     }
-    e.preventDefault(); // Prevent default form submission if this is part of a form element
+    e.preventDefault();
   
-    // Prepare the data to send to the backend
     const formData = {
-      formTitle, // Include the form title
-      inputs: inputFields, // Include all the input fields
+      formTitle,
+      inputs: inputFields,
     };
   
     console.log('Form Data to Send to Backend:', formData);
   
-    // Send the data to your backend API
     fetch('http://localhost:5000/form/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData), // Send the form data as a JSON payload
+      body: JSON.stringify(formData),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log('Form saved successfully:', data);
         alert('Form saved successfully');
-        navigate('/'); 
+  
+        // Clear the form fields after successful submission
+        setFormTitle('');
+        setSelectedType('');
+        setInputFields([]);
+        setTempValue(''); // Reset temporary value
+        navigate('/');
       })
       .catch((error) => {
         console.error('Error saving form:', error);
         alert('Failed to save form');
       });
   };
+  
   
 
   return (

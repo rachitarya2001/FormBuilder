@@ -102,3 +102,7 @@ h2 {
 .delete-btn:hover {
   background-color: #c82333;
 }
+p{
+  display: flex;
+  justify-content: center;
+}
