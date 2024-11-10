@@ -1,76 +1,166 @@
+/* Form container styling */
 .form-container {
   max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 40px auto; /* Increased top margin for breathing space */
+  padding: 30px; /* Increased padding for a more spacious look */
   border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  border-radius: 10px; /* Rounded corners for a smoother look */
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+  transition: transform 0.3s ease-in-out; /* Animation for hover effect */
 }
 
+/* Hover effect for form container */
+.form-container:hover {
+  transform: translateY(-5px); /* Lifts the form when hovered */
+}
+
+/* Form heading styling */
 h2 {
   text-align: center;
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+  text-transform: uppercase; /* All caps for emphasis */
+  letter-spacing: 1px;
 }
 
+/* Input field styling */
 .input-field {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
+  padding: 12px; /* Increased padding for better interaction */
+  margin: 15px 0;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  background-color: #fafafa;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Input focus state */
+.input-field:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Soft blue glow */
+  outline: none;
+}
+
+/* Button styling */
 .add-input-btn, .save-form-btn {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 4px;
+  padding: 14px;
+  margin-top: 15px;
+  border-radius: 6px;
   border: none;
   background-color: #28a745;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
+  text-transform: uppercase; /* All caps for button text */
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Button hover effect */
 .add-input-btn:hover, .save-form-btn:hover {
-  background-color: #218838;
+  background-color: #218838; /* Darker green on hover */
+  transform: translateY(-3px); /* Button lifts on hover */
 }
 
+/* Button active state */
+.add-input-btn:active, .save-form-btn:active {
+  background-color: #1e7e34;
+  transform: translateY(0); /* Button returns to original position */
+}
+
+/* Inputs display grid */
 .inputs-display {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
+  gap: 20px; /* Added gap between items for better spacing */
 }
 
+/* Input item styling */
 .input-item {
   width: 48%;
-  margin-right: 2%;
   margin-bottom: 20px;
+  position: relative;
 }
 
+/* Label styling */
 .input-item label {
   font-weight: bold;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
 }
 
+/* Input inside item */
 .input-item input {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Input focus inside item */
+.input-item input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Styling for input type section */
 .input-type {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.input-title,
-.input-placeholder {
-  margin-bottom: 20px;
+/* Input title and placeholder styling */
+.input-title, .input-placeholder {
+  margin-bottom: 25px;
 }
 
+/* Styling checkbox inputs */
 .input-type input[type="checkbox"] {
   margin-right: 10px;
 }
 
+/* Save form styling */
 .save-form {
-  margin-top: 20px;
+  margin-top: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Transition effect for hover on form container */
+.form-container:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Add responsive design for mobile devices */
+@media (max-width: 600px) {
+  .form-container {
+    width: 95%; /* Ensure form is responsive on mobile */
+    padding: 20px;
+  }
+
+  .inputs-display {
+    flex-direction: column;
+  }
+
+  .input-item {
+    width: 100%; /* Full width for small screens */
+  }
+
+  .add-input-btn, .save-form-btn {
+    font-size: 16px; /* Adjust button size for mobile */
+  }
+
+  h2 {
+    font-size: 22px; /* Adjust heading size */
+  }
 }

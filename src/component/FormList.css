@@ -1,10 +1,12 @@
 .form-list-container {
-  max-width: 800px;
-  margin: 20px auto;
+  width: 600px; /* Make the container responsive */
+  max-width: 900px; /* Limit the max width to 900px for better visibility */
+  margin: 20px; /* Center the container */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better presentation */
 }
 
 h2 {
@@ -13,8 +15,8 @@ h2 {
 }
 
 .create-form-btn {
-  margin-bottom: 20px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .create-btn {
@@ -24,6 +26,8 @@ h2 {
   font-size: 16px;
   border-radius: 4px;
   text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
 }
 
 .create-btn:hover {
@@ -36,40 +40,63 @@ h2 {
   gap: 20px;
 }
 
+/* Adjust the form item layout to properly align buttons and titles */
 .form-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 15px; /* Increased padding for better spacing */
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: #f1f1f1;
-  gap:10px;
+  gap: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+/* Ensure the title is properly aligned and does not shrink */
 .form-item h3 {
   margin: 0;
+  flex-grow: 1; /* Ensure the title takes up available space */
+  font-size: 18px;
+}
+
+/* Container to hold the buttons and align them properly */
+.form-item-buttons {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Styling for view, edit, and delete buttons */
+.view-btn,
+.edit-btn, /* added 'edit-btn' here */
+.delete-btn {
+  padding: 8px 16px; /* Slightly increased padding for better button size */
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .view-btn {
-  padding: 6px 12px;
   background-color: #007bff;
-  color: white;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 14px;
 }
 
 .view-btn:hover {
   background-color: #0056b3;
 }
 
+.edit-btn {
+  background-color: #ffc107;
+}
+
+.edit-btn:hover {
+  background-color: #e0a800;
+}
+
 .delete-btn {
-  padding: 6px 12px;
   background-color: #dc3545;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .delete-btn:hover {

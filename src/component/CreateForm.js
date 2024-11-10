@@ -38,6 +38,10 @@ const CreateForm = () => {
 
   // Handle saving form values
   const handleSaveForm = (e) => {
+    if(!formTitle){
+      alert("please fill the details first.")
+      return;
+    }
     e.preventDefault(); // Prevent default form submission if this is part of a form element
   
     // Prepare the data to send to the backend
@@ -82,6 +86,7 @@ const CreateForm = () => {
           onChange={handleFormTitleChange}
           placeholder="Enter form title"
           className="input-field"
+          required
         />
       </div>
 
